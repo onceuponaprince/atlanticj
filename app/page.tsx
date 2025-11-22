@@ -3,12 +3,15 @@ import { useState, useRef, useEffect, ChangeEvent } from "react";
 
 import Image from "next/image";
 import CountdownTimer from "@/components/organisms/CountdownTimer";
+import Header from "@/components/organisms/Header";
+import Footer from "@/components/organisms/Footer";
 
 export default function Home() {
   return (
-    <div className="font-primary">
-      <h1>Hello World</h1>
+    <div className="flex flex-col font-primary w-screen h-screen justify-center items-center text-center align-middle overflow-hidden">
+      <Header logo="/logo.svg" alt="Logo" width={100} height={100} />
       <CountdownTimer targetDate="2025-12-31" />
+      <Footer />
     </div>
   );
 }

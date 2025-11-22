@@ -3,8 +3,8 @@ import { Courier_Prime, Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import React from "react";
-import Header from "@/components/molecules/Header";
-import Footer from "@/components/molecules/Footer";
+
+import Footer from "@/components/organisms/Footer";
 
 const courierPrime = Courier_Prime({
   variable: "--font-courier-prime",
@@ -28,11 +28,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <Providers>
       <body className={`${courierPrime.variable} ${courierPrime.className} antialiased`}>
-          <Header logo="/logo.svg" alt="Logo" width={100} height={100} />
-          <main className=" flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 light:bg-background dark:bg-black sm:items-start">
+          <div className=" flex min-h-screen w-full max-w-3xl flex-col items-center justify-between light:bg-background dark:bg-black sm:items-start">
             {children}
-          </main>
-        <Footer />
+          </div>
       </body>
       </Providers>
     </html>

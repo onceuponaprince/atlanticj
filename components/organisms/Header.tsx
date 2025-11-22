@@ -2,7 +2,7 @@
 import Logo from "../atoms/Logo";
 import LinkButton from "../atoms/Link";
 import ThemeToggle from "../atoms/ThemeToggle";
-import BurgerMenu from "../atoms/BurgerMenu";
+import BurgerMenu from "../molecules/BurgerMenu";
 
 interface HeaderProps {
     logo: string;
@@ -19,9 +19,9 @@ const navigation = [
 
 export default function Header({ logo, alt, width, height }: HeaderProps) {
     return (
-        <header className="font-primary w-full border-b border-foreground/10">
+        <header className="font-primary w-full border-b border-foreground/10 relative">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
+                <div className="flex items-center justify-between h-16 md:flex md:justify-between md:items-center md:space-evenly md:w-full">
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <Logo src={logo} alt={alt} width={width} height={height} />
@@ -47,7 +47,7 @@ export default function Header({ logo, alt, width, height }: HeaderProps) {
                     {/* Mobile Menu Button with Menu */}
                     <BurgerMenu>
                         {/* Mobile Navigation */}
-                        <nav className="flex flex-col gap-3">
+                        <nav className="flex flex-col gap-3 mx-auto h-[30vh] w-full justify-self-center justify-center items-center text-center align-middle">
                             {navigation.map((item) => (
                                 <LinkButton 
                                     key={item.name} 
@@ -59,7 +59,7 @@ export default function Header({ logo, alt, width, height }: HeaderProps) {
                         </nav>
                         
                         {/* Mobile Theme Toggle */}
-                        <div className="pt-2 border-t border-foreground/10">
+                        <div className="pt-6 border-t border-foreground/10 mx-auto h-[20vh] w-[50%] justify-self-center justify-center items-center text-center align-middle">
                             <ThemeToggle />
                         </div>
                     </BurgerMenu>
