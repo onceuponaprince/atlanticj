@@ -13,8 +13,8 @@ interface HeaderProps {
 
 const navigation = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    // { name: "About", href: "/about" },
+    // { name: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
@@ -28,7 +28,7 @@ export default function Header() {
                     </div> */}
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center gap-6">
+                    <nav className="hidden md:flex items-center gap-6 justify-center space-evenly w-full">
                         {navigation.map((item) => (
                             <LinkButton 
                                 key={item.name} 
@@ -47,13 +47,13 @@ export default function Header() {
                     {/* Mobile Menu Button with Menu */}
                     <BurgerMenu>
                         {/* Mobile Navigation */}
-                        <nav className="flex flex-col gap-3 mx-auto h-[30vh] w-full justify-self-center justify-center items-center text-center align-middle">
+                        <nav className="flex flex-col gap-3 w-full justify-self-center justify-center items-center text-center align-middle">
                             {navigation.map((item) => (
                                 <LinkButton 
                                     key={item.name} 
                                     href={item.href} 
                                     buttonName={item.name}
-                                    className="text-foreground hover:text-foreground/80 transition-colors text-left py-2"
+                                    className="flex justify-self-center font-bold items-center align-middle text-foreground text-center hover:text-foreground/80 hover:bg-foreground/10 p-0 transition-colors "
                                 />
                             ))}
                         </nav>
