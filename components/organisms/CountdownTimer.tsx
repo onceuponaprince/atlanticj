@@ -1,11 +1,19 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 
 type Datetime = string | Date;
 
-const CountdownTimer = ({ targetDate }: { targetDate: Datetime }) => {
+interface CountdownTimerProps {
+  targetDate: Datetime;
+  onLoaded?: () => void;
+}
+
+const CountdownTimer = ({ targetDate, onLoaded }: CountdownTimerProps) => {
+  const hasNotifiedRef = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const calculateTimeRemaining = () => {
     const now = new Date().getTime();
     const target = new Date(targetDate).getTime();
@@ -26,6 +34,26 @@ const CountdownTimer = ({ targetDate }: { targetDate: Datetime }) => {
   const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
 
   useEffect(() => {
+    // Signal that countdown is mounted and running
+    if (!hasNotifiedRef.current && onLoaded && containerRef.current) {
+      // Wait for first render and ensure text is visible with numbers
+      const timer = setTimeout(() => {
+        if (containerRef.current && !hasNotifiedRef.current) {
+          const hasText = containerRef.current.textContent && containerRef.current.textContent.trim().length > 0;
+          // Verify countdown numbers are displayed (contains 'd', 'h', 'm', 's')
+          const hasCountdownFormat = containerRef.current.textContent?.match(/\d+d\s+\d+h\s+\d+m\s+\d+s/);
+          if (hasText && hasCountdownFormat) {
+            hasNotifiedRef.current = true;
+            onLoaded();
+          }
+        }
+      }, 200);
+
+      return () => clearTimeout(timer);
+    }
+  }, [onLoaded]);
+
+  useEffect(() => {
     const timer = setInterval(() => {
       setTimeRemaining(calculateTimeRemaining());
     }, 1000);
@@ -39,7 +67,10 @@ const CountdownTimer = ({ targetDate }: { targetDate: Datetime }) => {
   }
 
   return (
-    <div className="flex countdown-timer font-bold text-3xl w-screen h-screen justify-self-center justify-center items-center text-center align-items-center gap-4 md:text-5xl lg:text-7xl">
+    <div 
+      ref={containerRef}
+      className="flex countdown-timer font-bold text-3xl w-screen h-screen justify-self-center justify-center items-center text-center align-items-center gap-4 md:text-5xl lg:text-7xl"
+    >
       <span>{timeRemaining.days}d </span>
       <span>{timeRemaining.hours}h </span>
       <span>{timeRemaining.minutes}m </span>

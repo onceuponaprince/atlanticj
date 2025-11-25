@@ -1,6 +1,46 @@
 'use client'
 
-export default function BackgroundVid() {
+import { useEffect, useRef } from 'react';
+
+interface BackgroundVidProps {
+  onLoaded?: () => void;
+}
+
+export default function BackgroundVid({ onLoaded }: BackgroundVidProps) {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const hasNotifiedRef = useRef(false);
+
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe || hasNotifiedRef.current) return;
+
+    // Wait for iframe to load
+    const handleLoad = () => {
+      // Give the video a moment to start playing
+      setTimeout(() => {
+        if (!hasNotifiedRef.current && onLoaded) {
+          hasNotifiedRef.current = true;
+          onLoaded();
+        }
+      }, 500);
+    };
+
+    iframe.addEventListener('load', handleLoad);
+
+    // Safety timeout (cross-origin iframes can't access contentDocument)
+    const timeout = setTimeout(() => {
+      if (!hasNotifiedRef.current && onLoaded) {
+        hasNotifiedRef.current = true;
+        onLoaded();
+      }
+    }, 3000);
+
+    return () => {
+      iframe.removeEventListener('load', handleLoad);
+      clearTimeout(timeout);
+    };
+  }, [onLoaded]);
+
   return (
     <div 
       style={{ 
@@ -14,6 +54,7 @@ export default function BackgroundVid() {
       }}
     >
       <iframe
+        ref={iframeRef}
         src="https://player.vimeo.com/video/1140380584?background=1&autoplay=1&loop=1&muted=1"
         allow="autoplay; fullscreen; picture-in-picture"
         style={{

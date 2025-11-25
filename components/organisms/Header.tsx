@@ -32,7 +32,7 @@ export default function Header() {
                             ))}
                         </nav>
                     </div>
-                    <div className="flex items-center w-full ml-20">
+                    <div className="flex items-center w-full ml-10 md:justify-center">
                     {theme === 'dark' ? (
                         <Logo src="/logo-white.png" alt="Logo" width={32} height={32} className="hover:bg-foreground/10 p-1 rounded-md transition-colors bg-amber-600"/>
                     ) : (
