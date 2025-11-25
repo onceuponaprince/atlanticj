@@ -17,7 +17,7 @@ export default function Header() {
     return (
         <header className="font-primary w-screen border-b border-foreground/10 relative">
             <div className="container px-4 sm:px-6 md:w-screen md:flex md:justify-self-center">
-                <div className="flex items-center justify-between h-16 w-full">
+                <div className="flex items-center justify-around space-evenly h-16 w-full">
                     {/* Left section: Logo + Desktop Navigation */}
                     <div className="flex items-center gap-6">
                         {/* <Logo src={logo} alt={alt} width={width} height={height} /> */}
@@ -32,11 +32,13 @@ export default function Header() {
                             ))}
                         </nav>
                     </div>
+                    <div className="flex items-center w-full ml-20">
                     {theme === 'dark' ? (
-                        <Logo src="/logo-white.png" alt="Logo" width={32} height={32} />
+                        <Logo src="/logo-white.png" alt="Logo" width={32} height={32} className="hover:bg-foreground/10 p-1 rounded-md transition-colors bg-amber-600"/>
                     ) : (
-                        <Logo src="/logo-black.png" alt="Logo" width={32} height={32} />
+                        <Logo src="/logo-black.png" alt="Logo" width={32} height={32} className="hover:bg-foreground/10 p-1 rounded-md transition-colors bg-amber-600"/>
                     )}
+                    </div>
                     {/* Right section: Theme toggle + Burger menu */}
                     <div className="flex items-center gap-4">
                         <div className="hidden md:flex md:w-full md:flex-row-reverse">
