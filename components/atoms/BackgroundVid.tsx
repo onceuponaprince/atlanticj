@@ -61,7 +61,7 @@ export default function BackgroundVid({ onLoaded }: BackgroundVidProps) {
           position: "absolute",
           top: "50%",
           left: "50%",
-          width: "200vh", // 16:9 aspect ratio based on viewport height
+          width: "200vw", // 16:9 aspect ratio based on viewport height
           height: "200vw", // 16:9 aspect ratio based on viewport width
           transform: "translate(-50%, -50%)",
         }}
