@@ -3,13 +3,8 @@ import Logo from "../atoms/Logo";
 import LinkButton from "../atoms/Link";
 import ThemeToggle from "../atoms/ThemeToggle";
 import BurgerMenu from "../molecules/BurgerMenu";
+import { useTheme } from "next-themes";
 
-interface HeaderProps {
-    logo: string;
-    alt: string;
-    width: number;
-    height: number;
-}
 
 const navigation = [
     { name: "Home", href: "/" },
@@ -18,6 +13,7 @@ const navigation = [
 ];
 
 export default function Header() {
+    const { theme } = useTheme();
     return (
         <header className="font-primary w-screen border-b border-foreground/10 relative">
             <div className="container px-4 sm:px-6 md:w-screen md:flex md:justify-self-center">
@@ -36,7 +32,11 @@ export default function Header() {
                             ))}
                         </nav>
                     </div>
-
+                    {theme === 'dark' ? (
+                        <Logo src="/logo-white.png" alt="Logo" width={32} height={32} />
+                    ) : (
+                        <Logo src="/logo-black.png" alt="Logo" width={32} height={32} />
+                    )}
                     {/* Right section: Theme toggle + Burger menu */}
                     <div className="flex items-center gap-4">
                         <div className="hidden md:flex md:w-full md:flex-row-reverse">
@@ -55,7 +55,6 @@ export default function Header() {
                                     />
                                 ))}
                             </nav>
-                            
                             {/* Mobile Theme Toggle */}
                             <div className="pt-6 border-t border-foreground/10 mx-auto h-[20vh] w-[50%] justify-self-center justify-center items-center text-center align-middle">
                                 <ThemeToggle />

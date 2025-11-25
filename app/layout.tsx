@@ -19,13 +19,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Providers>
+      
       <body className={`${courierPrime.variable} ${courierPrime.className} antialiased`}>
+        <Providers>
           <div className=" flex min-h-screen w-full max-w-3xl flex-col items-center justify-between light:bg-background dark:bg-black sm:items-start">
             {children}
           </div>
+          </Providers>
       </body>
-      </Providers>
     </html>
   );
 }

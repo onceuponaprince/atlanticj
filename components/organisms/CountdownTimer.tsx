@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 
+
 type Datetime = string | Date;
 
 const CountdownTimer = ({ targetDate }: { targetDate: Datetime }) => {
@@ -38,7 +39,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: Datetime }) => {
   }
 
   return (
-    <div className="flex countdown-timer text-2xl w-screen h-screen justify-self-center justify-center items-center text-center align-items-center gap-4 md:text-4xl">
+    <div className="flex countdown-timer font-bold text-3xl w-screen h-screen justify-self-center justify-center items-center text-center align-items-center gap-4 md:text-5xl lg:text-7xl">
       <span>{timeRemaining.days}d </span>
       <span>{timeRemaining.hours}h </span>
       <span>{timeRemaining.minutes}m </span>
