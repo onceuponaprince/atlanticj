@@ -7,12 +7,6 @@ export default {
       ],
       theme: {
         extend: {
-          colors: {
-            background: 'var(--color-background)',
-            foreground: 'var(--color-foreground)',
-            foregroundDark: 'var(--color-foreground-dark)',
-            backgroundDark: 'var(--color-background-dark)',
-          },
         },  
       },
     
