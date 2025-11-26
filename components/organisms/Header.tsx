@@ -34,9 +34,9 @@ export default function Header() {
                     </div>
                     <div className="flex items-center w-full ml-10 md:justify-center">
                     {theme === 'dark' ? (
-                        <Logo src="/logo-white.png" alt="Logo" width={32} height={32} className="hover:bg-foreground/10 p-1 rounded-md transition-colors bg-amber-600"/>
+                        <Logo src="/logo-white.png" alt="Logo" width={32} height={32} className="hover:bg-foreground/10 p-1 rounded-md transition-colors"/>
                     ) : (
-                        <Logo src="/logo-black.png" alt="Logo" width={32} height={32} className="hover:bg-foreground/10 p-1 rounded-md transition-colors bg-amber-600"/>
+                        <Logo src="/logo-black.png" alt="Logo" width={32} height={32} className="hover:bg-foreground/10 p-1 rounded-md transition-colors"/>
                     )}
                     </div>
                     {/* Right section: Theme toggle + Burger menu */}

@@ -55,7 +55,7 @@ export default function BackgroundVid({ onLoaded }: BackgroundVidProps) {
     >
       <iframe
         ref={iframeRef}
-        src="https://player.vimeo.com/video/1140380584?background=1&autoplay=1&loop=1&muted=1"
+        src="https://player.vimeo.com/video/1140380584?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&playsinline=1"
         allow="autoplay; fullscreen; picture-in-picture"
         style={{
           position: "absolute",
