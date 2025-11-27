@@ -14,7 +14,6 @@ export default function Footer() {
                     <LinkButton key={item.href} href={item.href} buttonName={item.buttonName} className="text-foreground font-bold text-lg hover:text-foreground/80 transition-colors hover:bg-foreground/10 p-1" />
                     ))}
                 </nav>
-            <p className="w-full text-center text-[8px]">Built by TeenyWeeny Studio</p>
         </div>
     );
 }
