@@ -126,7 +126,7 @@ export default function Home() {
         <div className="flex flex-col font-primary w-screen h-screen justify-center items-center text-center align-middle overflow-hidden">
           <Header />
           <BackgroundVid onLoaded={handleVideoLoaded} />
-          <CountdownTimer targetDate="2025-12-31" onLoaded={handleCountdownLoaded} />
+          <CountdownTimer targetDate="2026-02-12" onLoaded={handleCountdownLoaded} />
           <Footer />
         </div>
       )}
